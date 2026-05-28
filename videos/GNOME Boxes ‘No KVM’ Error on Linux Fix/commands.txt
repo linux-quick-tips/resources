@@ -1,0 +1,4 @@
+sudo apt install gnome-boxes qemu-kvm libvirt-daemon-system libvirt-clients
+systemctl status libvirtd
+sudo usermod -aG libvirt $USER
+sudo usermod -aG kvm $USER
