@@ -1,0 +1,84 @@
+
+sudo apt update && sudo apt upgrade -y
+sudo apt install curl ca-certificates mesa-utils python3-pip lzip python3.10-venv
+
+If the waydroid init command throws an error, install the required kernel modules
+==================================================================================
+
+git clone https://github.com/choff/anbox-modules
+cd anbox-modules
+sudo ./INSTALL.sh
+sudo modprobe binder_linux
+sudo modprobe ashmem_linux
+cd ~
+
+curl -s https://repo.waydro.id | sudo bash
+sudo apt update
+
+sudo apt install waydroid
+
+cd ~/Downloads
+
+wget -O system-image.zip "https://sourceforge.net/projects/waydroid/files/images/system/lineage/waydroid_x86_64/lineage-18.1-20250628-VANILLA-waydroid_x86_64-system.zip/download"
+
+wget -O vendor-image.zip "https://sourceforge.net/projects/waydroid/files/images/vendor/waydroid_x86_64/lineage-18.1-20250628-MAINLINE-waydroid_x86_64-vendor.zip/download"
+
+sudo mkdir -p /etc/waydroid-extra/images
+sudo unzip system-image.zip -d /etc/waydroid-extra/images
+sudo unzip vendor-image.zip -d /etc/waydroid-extra/images
+ls -l /etc/waydroid-extra/images/system.img /etc/waydroid-extra/images/vendor.img
+
+sudo waydroid init -f -i /etc/waydroid-extra/images
+
+sudo systemctl start waydroid-container.service
+waydroid session start
+systemctl status waydroid-container.service   
+
+
+git clone https://github.com/casualsnek/waydroid_script
+cd waydroid_script
+python3 -m venv venv
+venv/bin/pip install -r requirements.txt
+sudo venv/bin/python3 main.py
+
+Choose Android 11, gapps, libhoudini, libndk, and magisk 
+
+------------------------------------------------------------------
+
+Setting Up the Network
+======================
+
+Find your external network interface name 
+
+ip route show
+
+Look for a line starting with default. 
+
+default via 192.168.1.1 dev eth0 proto dhcp metric 100
+
+In this example, eth0 is your external network interface
+
+sudo ufw route allow in on waydroid0 out on eth0
+sudo ufw route allow in on eth0 out on waydroid0
+
+Besides, allow the following ports:
+
+sudo ufw allow 53/udp
+sudo ufw allow 67/udp
+
+------------------------------------------------
+
+Getting the Android ID
+=======================
+
+Run Waydroid first
+
+sudo pip3 install InquirerPy tqdm
+sudo venv/bin/python3 main.py certified
+
+Submit the id here: https://www.google.com/android/uncertified
+
+waydroid session stop
+sudo systemctl stop waydroid-container.service
+
+
