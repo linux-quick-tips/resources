@@ -1,0 +1,2 @@
+https://github.com/pweil-/origin-quake/blob/master/id1/pak0.pak
+https://dl.xonotic.org/xonotic-0.7.0-low.zip
