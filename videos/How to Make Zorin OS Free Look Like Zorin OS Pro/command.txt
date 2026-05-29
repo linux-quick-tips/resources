@@ -1,0 +1,32 @@
+sudo apt install gnome-shell-extension-manager gnome-tweaks
+
+
+Setting up conky
+=================
+
+
+sudo apt update
+sudo apt install conky-all
+
+mkdir -p ~/.config/conky
+mv ~/Downloads/YourTheme ~/.config/conky/
+
+
+cd ~/.config/conky/YourTheme
+conky -c conky.conf
+
+mkdir -p ~/.local/bin
+nano ~/.local/bin/conky-todo.sh
+
+#!/bin/bash
+conky -c /home/john/.config/conky/MX-ToDo/todo_sys.conf &
+
+chmod +x ~/.local/bin/conky-todo.sh
+
+Keyboard shortcut 1:
+------------------- 
+Settings → Keyboard → Custom Shortcuts
+Name: Conky
+Command:
+/home/john/.local/bin/conky-todo.sh
+Keybind: ctrl+alt+c
