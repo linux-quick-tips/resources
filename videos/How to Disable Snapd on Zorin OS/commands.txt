@@ -1,0 +1,14 @@
+snap list
+sudo apt purge snapd -y  
+rm -rf ~/snap
+sudo rm -rf /snap
+sudo rm -rf /var/snap
+sudo rm -rf /var/lib/snapd
+
+sudo nano /etc/apt/preferences.d/nosnap.pref
+
+Package: snapd
+Pin: release a=*
+Pin-Priority: -10
+
+If snap list shows snap packages, remove them first and then follow the given steps.
