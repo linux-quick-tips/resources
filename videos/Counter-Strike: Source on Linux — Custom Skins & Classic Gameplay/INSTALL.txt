@@ -1,0 +1,1 @@
+paste the folder into the custom directory, which is .steam >> steam >> steamapps >> common >> Counter Strike Source >> cstrike >> custom
