@@ -1,0 +1,11 @@
+cp /usr/share/applications/firefox.desktop ~/.local/share/applications/
+
+nano ~/.local/share/applications/firefox.desktop
+
+
+Exec=/usr/lib/firefox/firefox -private-window %u
+
+
+(Note: Ensure it uses a single dash -private-window instead of the double dash --private-window, as the single dash natively forces the active process to handle the incoming argument correctly).
+
+update-desktop-database ~/.local/share/applications
