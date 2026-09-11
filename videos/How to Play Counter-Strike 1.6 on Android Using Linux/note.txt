@@ -1,0 +1,6 @@
+CS 1.6 Client: https://github.com/Velaron/cs16-client
+Xash3D: https://github.com/FWGS/xash3d-fwgs/releases
+CS2 Dust II Definitive Edition: https://gamebanana.com/mods/671573
+Counter-Strike Bot Pack - 25th Anniversary Update: https://gamebanana.com/mods/560488
+CS2: Default Player Models: https://gamebanana.com/mods/638772
+Bloodsport - AK-47: https://gamebanana.com/mods/223905
